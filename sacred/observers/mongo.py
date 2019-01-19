@@ -270,7 +270,7 @@ class MongoObserver(RunObserver):
         import pymongo.errors
 
         try:
-            self.runs.replace_one({'_id': self.run_entry['_id']},
+            self.runs.update_one({'_id': self.run_entry['_id']},
                                   self.run_entry)
         except pymongo.errors.AutoReconnect:
             pass  # just wait for the next save
